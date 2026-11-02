@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "calculator.dir\\Debug\\a.obj",
+            "outputs": [
+                "calculator.dir\\Debug\\a.cpp.obj.dt.module.json",
+                "calculator.dir\\Debug\\a.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
