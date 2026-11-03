@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\shmepus\Desktop\lab3-stack-calculator\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\s25380546\Desktop\lab3-stack-calculator\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\shmepus\Desktop\lab3-stack-calculator\build\Debug\calculator.exe</FullPath>
+      <FullPath>C:\Users\s25380546\Desktop\lab3-stack-calculator\build\Debug\calculator.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

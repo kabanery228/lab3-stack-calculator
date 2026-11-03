@@ -1,6 +1,6 @@
-^C:\USERS\SHMEPUS\DESKTOP\LAB3-STACK-CALCULATOR\BUILD\CMAKEFILES\47F70E1B6DBB1F2D2B1AA928927B4A65\GENERATE.STAMP.RULE
+^C:\USERS\S25380546\DESKTOP\LAB3-STACK-CALCULATOR\BUILD\CMAKEFILES\2D59A6943F41C5B8FAD698F80A5C3F39\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/shmepus/Desktop/lab3-stack-calculator -BC:/Users/shmepus/Desktop/lab3-stack-calculator/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/shmepus/Desktop/lab3-stack-calculator/build/lab3_stack_calculator.slnx
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/s25380546/Desktop/lab3-stack-calculator -BC:/Users/s25380546/Desktop/lab3-stack-calculator/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/s25380546/Desktop/lab3-stack-calculator/build/lab3_stack_calculator.slnx
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\shmepus\Desktop\lab3-stack-calculator\build\CMakeFiles\47f70e1b6dbb1f2d2b1aa928927b4a65\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\s25380546\Desktop\lab3-stack-calculator\build\CMakeFiles\2d59a6943f41c5b8fad698f80a5c3f39\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{3B15895B-87D7-3D34-B74D-B77C9F46F1C5}</UniqueIdentifier>
+      <UniqueIdentifier>{F1FFF942-D9C6-3D73-931A-10A0AF91EDC7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
