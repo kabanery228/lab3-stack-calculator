@@ -1,3 +1,0 @@
-C:/Users/s25380546/Desktop/lab3-stack-calculator/build/CMakeFiles/calculator.dir
-C:/Users/s25380546/Desktop/lab3-stack-calculator/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/s25380546/Desktop/lab3-stack-calculator/build/CMakeFiles/ZERO_CHECK.dir

@@ -49,7 +49,7 @@ public:
 class Expression{
     std::string base;
     std::vector<std::string> polish;
-    double res;
+    double res = -1;
     std::map <std::string, double> operands;
     unsigned char priority(const std::string& op){
         return (op=="^" || op == "sin" || op == "sqrt" || op=="cos" || op=="ln" || op=="!")? 3:(op=="*" || op == "/")? 2:(op=="+" || op == "-")? 1:0;
@@ -86,24 +86,13 @@ class Expression{
         return false;
     }
 
-    void calc(){
-        stack<double> st;
-        for (const auto& x: polish){
-            if (isdigit(x[0])) st.push(std::stod(x));
-            else if (x == "pi") st.push(pi);
-            else if (x == "e") st.push(e);
-            else if (isalpha(x[0]) || x == "!"){
-                double a = st.top(); st.pop();
-                st.push(convert_op1(x)(a));
-            }
-            else {
-                double b = st.top(); st.pop();
-                double a = st.top(); st.pop();
-                st.push(convert_op2(x)(a,b));
-            }  
-        }
-        res = st.top();
+    bool isunary(const std::string& op) {
+        return op == "ln" || op == "cos" || op == "sin" || op == "sqrt" ||
+            op == "!" || op == "arcsin" || op == "arccos" ||
+            op == "tg" || op == "tan";
     }
+
+
     void parse() {
         stack<std::string> st;
         for (int i = 0; i < base.size();) {
@@ -123,9 +112,11 @@ class Expression{
                 if (base[i] == 'e') { polish.push_back("e");i++;continue; }
 
                 std::string op; op.push_back(base[i++]);// +ln 1+ln(2)
-                while (i < base.size() && !isdigit(base[i]) && !isoperation(op) && base[i] != 'e' && base[i] != 'p') op.push_back(base[i++]);
+                while (i < base.size() && !isdigit(base[i]) && !isoperation(op) && base[i] != 'e' && base[i] != 'p' && base[i]!=' ') op.push_back(base[i++]);
                 if (!isoperation(op)) {
                     operands[op] = 0.0;
+                    polish.push_back(op);
+                    continue;
                 }
                 if (op == "(") st.push(op);
                 else if (op == ")") {
@@ -153,15 +144,39 @@ public:
         base = std::move(exp);
         stack<std::string> st;
         parse();
-        calc();
+        //calc();
     }
-    void print() const{
+    void calc(const std::vector<double>& values) {
+        size_t i = 0;
+        for (auto& x : operands) x.second = values[i++];
+        stack<double> st;
+        for (const auto& x : polish) {
+            if (isdigit(x[0])) st.push(std::stod(x));
+            else if (x == "pi") st.push(pi);
+            else if (x == "e") st.push(e);
+            else if (!isoperation(x)) st.push(operands[x]);
+            else if (isunary(x)) {
+                double a = st.top(); st.pop();
+                st.push(convert_op1(x)(a));
+            }
+            else {
+                double b = st.top(); st.pop();
+                double a = st.top(); st.pop();
+                st.push(convert_op2(x)(a, b));
+            }
+        }
+        res = st.top();
+    }
+    void print() const {
+        //for (const auto& x : operands) {
+        //    cout << x.first << ' ' << x.second << endl;
+        //}
         cout<<"polish notation: ";
         for (auto& c: polish){
             cout<<c<<' ';
         }
         cout<<endl;
-        cout<<"result: "<<res<<endl;
+        //cout<<"result: "<<res<<endl;
     }
     double getRes() const{
         return res;
@@ -173,4 +188,6 @@ int main(){
     std::getline(cin, exp);
     Expression e(exp);
     e.print();
+    e.calc({ 1,2 });
+    cout << e.getRes();
 }
