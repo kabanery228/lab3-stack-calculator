@@ -35,13 +35,14 @@ class Expression{
     std::function<double(double,double)> convert_op2(const std::string& op) const {
         if (op == "+") return [](double a, double b) -> double {return a + b;};
         if (op == "-") return [](double a, double b) -> double {return a - b;};
-        if (op == "/") return [](double a, double b) -> double {return a / b;};
+        if (op == "/") return [](double a, double b) -> double {if (b == 0) throw "division by 0"; return a / b; };
         if (op == "*") return [](double a, double b) -> double {return a * b;};
         if (op == "^") return [](double a, double b) -> double {
             double res = (b>0)? a:1;
             while(b>0 && --b){res*=a;}while(b<=0 && b++){res/=a;}
             return res;
         };
+        throw "no such operation";
         return nullptr;
     }
     std::function<double(double)> convert_op1(const std::string& op) const {
@@ -53,6 +54,7 @@ class Expression{
         if (op == "arcsin") return [](double a) -> double {return std::asin(a);};
         if (op == "arccos") return [](double a) -> double {return std::acos(a);};
         if (op == "tg" || op == "tan") return [](double a) -> double {return std::tan(a);};
+        throw "no such operation";
         return nullptr;
     }
     
@@ -122,9 +124,11 @@ public:
         parse();
         //calc();
     }
-    void calc(const std::vector<double>& values) {
-        size_t i = 0;
-        for (auto& x : operands) x.second = values[i++];
+    void calc(const std::map<std::string, double>& values) {
+        if (values.size() != operands.size()) throw "too many or too little numbers";
+        for (const auto& x : values) {
+            operands[x.first] = x.second;
+        }
         stack<double> st;
         for (const auto& x : polish) {
             if (isdigit(x[0])) st.push(std::stod(x));

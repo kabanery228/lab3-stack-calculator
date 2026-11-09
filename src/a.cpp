@@ -5,6 +5,6 @@ int main(){
     std::getline(cin, exp);
     Expression e(exp);
     e.print();
-    e.calc({ 2 });
+    e.calc({ {"a",2} });
     cout << e.getRes();
 }
